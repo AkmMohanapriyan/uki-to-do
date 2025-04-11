@@ -6,46 +6,116 @@
     <title>UKI-TO-DO</title>
 
     <!-- link css file -->
-     <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="style.css">
      <!-- boostrap css cdn link -->
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
 
      <!-- boostrap js cdn link -->
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 
+     <style>
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+    background-color: rgb(96, 252, 65);
+}
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    margin-top: 270px;
+    width: 430px;
+}
+h2 {
+    text-align: center;
+}
+.input-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+input, select, button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+button {
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+button:hover {
+    cursor: pointer;
+}
+.task-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.priority-indicator {
+    width: 10px;
+    height: 100%;
+    margin-right: 10px;
+}
+.low { background-color: #28a745; }
+.medium { background-color: #ffc107; }
+.high { background-color: #dc3545; }
+.delete-btn {
+    margin-left: auto;
+    background-color: #dc3545;
+    padding: 5px;
+}
+.delete-btn:hover {
+    background-color: #b02a37;
+}
+#history {
+    margin-top: 20px;
+    display: none;
+}
+#showHistoryBtn {
+    background-color: #343a40;
+}
+#showHistoryBtn:hover {
+    background-color: #23272b;
+}
+
+     </style>
+
 </head>
 <body>
 
     <section id="main">
 
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <form action="" method="get">
+        <div class="container gap-4">
 
-                        <h1 class="text-center" style="font-family: 'Times New Roman', Times, serif;">TO DO List</h1>
-                        <div class="mb-3 d-flex gap-3">
-                            <input type="text" class="form-control" id="task" name="task" placeholder="Enter your task">
-                            
-                            <select name="" id="tasks">
-                                <option value="low">Low</option>
-                                <option value="medium">Medium</option>
-                                <option value="high">Hight</option>
-                            </select>
+            <h2>TO DO LIST</h2>
 
-                            <button type="submit" class="btn" id="addBtn" style=" background-color: black; color: white;" onclick="CreateToDoItems()">Add</button>
+            <div class="input-section">
 
-                        </div>
+                <input type="text" id="taskInput" placeholder="Enter your task">
 
-                        <div id="taskList">
-                            <ul id="list-items" class="list-items"></ul>
-                        </div>
+                <select id="prioritySelect">
 
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
 
-                    </form>
-                </div>
+                </select>
+
+                <button onclick="addTask()">Add</button>
+
             </div>
+
+            <div id="taskList"></div>
+
         </div>
 
     </section>
